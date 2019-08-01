@@ -20,5 +20,6 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('oppplatapi/', include('oppplatapi.urls')),
     url(r'index/$', index, name='index'),
 ]
