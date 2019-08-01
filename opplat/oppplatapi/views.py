@@ -19,7 +19,7 @@ jwt_get_username_from_payload = api_settings.JWT_PAYLOAD_GET_USERNAME_HANDLER
 class MyTest(APIView):
     def get(self, request, *args, **kwargs):
         res = {"username": "jsqqqq", "password": "hello123"}
-        # ser = TestSerializer(instance=res)
-        jres = json.dumps(res)
+        ser = TestSerializer(instance=res)
+        # jres = json.dumps(res, ensure_ascii=False)
 
-        return Response(jres)
+        return Response(ser)
