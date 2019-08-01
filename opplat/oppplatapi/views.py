@@ -38,9 +38,9 @@ class DomainCheck(APIView):
                     "err": "false"
                 }]
             }]
+        res["code"] = "0"
         res["data"] = data
-        res["code"] = 0
-        res["message"] = ""
-        ser = TestSerializer(instance=res, many=True)
+        res["message"] = "dfsfd"
+        ser = TestSerializer(instance=res)
 
         return Response(ser.data)
