@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_jwt.settings import api_settings
 from .jwtutils.serializers import TestSerializer
+import json
 
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -18,6 +19,7 @@ jwt_get_username_from_payload = api_settings.JWT_PAYLOAD_GET_USERNAME_HANDLER
 class MyTest(APIView):
     def get(self, request, *args, **kwargs):
         res = {"username": "jsqqqq", "password": "hello123"}
-        ser = TestSerializer(instance=res, many=True)
+        # ser = TestSerializer(instance=res)
+        jres = json.dumps(res)
 
-        return Response(ser.data)
+        return Response(jres)
