@@ -18,28 +18,26 @@ jwt_get_username_from_payload = api_settings.JWT_PAYLOAD_GET_USERNAME_HANDLER
 
 class MyTest(APIView):
     def get(self, request, *args, **kwargs):
-        res = {
-                "172.16.16.16": [{
-                "url": "www.baidu.com",
-                "err": False,
-                "message": "",
-                "area": "华东-上海节点",
-                "time": -1564581541.246279
+        res = [{
+                "ip": "172.16.1.2",
+                "detail": [{
+                    "url": "www.baidu.com",
+                    "err": 0
                 }, {
-                "url": "www.sohu.com",
-                "err": True,
-                "message": "www.sohu.com: this domain is hijacked",
-                "area": "华东-上海节点",
-                "time": -1564581541.4576719
-                }, {
-                "url": "www.sina.com",
-                "err": True,
-                "message": "www.sina.com: this domain is hijacked",
-                "area": "华东-上海节点",
-                "time": -1564581541.6912775
+                    "url": "www.sohu.com",
+                    "err": 0
                 }]
-            }
-        ser = TestSerializer(instance=res)
+            }, {
+                "ip": "172.16.1.2",
+                "detail": [{
+                    "url": "www.baidu.com",
+                    "err": "false"
+                }, {
+                    "url": "www.sohu.com",
+                    "err": "false"
+                }]
+            }]
+        ser = TestSerializer(instance=res, many=True)
         # jres = json.dumps(res, ensure_ascii=False)
 
         return Response(ser.data)

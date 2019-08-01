@@ -12,5 +12,5 @@ from rest_framework import serializers
 
 
 class TestSerializer(serializers.Serializer):
-    username = serializers.CharField(max_length=16)
-    password = serializers.CharField(max_length=32)
+    ip = serializers.CharField(max_length=16)
+    detail = serializers.CharField()
