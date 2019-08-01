@@ -12,6 +12,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 
 def index(request):
-    HttpResponse("hello world")
+    return HttpResponse("hello world")
 
 
