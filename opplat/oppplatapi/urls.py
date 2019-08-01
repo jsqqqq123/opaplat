@@ -16,5 +16,5 @@ from rest_framework.views import APIView
 
 
 urlpatterns = [
-    url(r'(?P<versions>[v1|v2])/test/$', views.MyTest.as_view(), name='mytest'),
+    url(r'(?P<versions>[v1|v2])/test/DomainCheck$', views.DomainCheck.as_view(), name='domaincheck'),
 ]

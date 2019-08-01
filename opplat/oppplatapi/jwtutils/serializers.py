@@ -12,5 +12,8 @@ from rest_framework import serializers
 
 
 class TestSerializer(serializers.Serializer):
-    ip = serializers.CharField(max_length=16)
-    detail = serializers.CharField()
+    code = serializers.IntegerField()
+    message = serializers.CharField(max_length=255)
+    data = serializers.CharField()
+    # ip = serializers.CharField(max_length=16)
+    # detail = serializers.CharField()

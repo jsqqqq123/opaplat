@@ -16,9 +16,10 @@ jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
 jwt_get_username_from_payload = api_settings.JWT_PAYLOAD_GET_USERNAME_HANDLER
 
 
-class MyTest(APIView):
+class DomainCheck(APIView):
     def get(self, request, *args, **kwargs):
-        res = [{
+        res = {}
+        data = [{
                 "ip": "172.16.1.2",
                 "detail": [{
                     "url": "www.baidu.com",
@@ -37,7 +38,9 @@ class MyTest(APIView):
                     "err": "false"
                 }]
             }]
+        res["data"] = data
+        res["code"] = 0
+        res["message"] = ""
         ser = TestSerializer(instance=res, many=True)
-        # jres = json.dumps(res, ensure_ascii=False)
 
         return Response(ser.data)
