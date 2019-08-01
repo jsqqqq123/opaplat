@@ -22,4 +22,4 @@ class MyTest(APIView):
         ser = TestSerializer(instance=res)
         # jres = json.dumps(res, ensure_ascii=False)
 
-        return Response(ser)
+        return Response(ser.data)
