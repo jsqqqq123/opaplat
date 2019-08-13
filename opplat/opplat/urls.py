@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from .views import *
+from .views import index, getdockerinfo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('oppplatapi/', include('oppplatapi.urls')),
     url(r'index/$', index, name='index'),
+    url(r'getdockerinfo/$', getdockerinfo, name='getdockerinfo'),
 ]

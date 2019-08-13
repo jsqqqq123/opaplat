@@ -1,3 +1,6 @@
 *.idea
 db.sqlite3
 manage.py
+*.pyc
+opplat/venv/
+opplat/__pycache__/

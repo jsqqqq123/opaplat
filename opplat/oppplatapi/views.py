@@ -6,7 +6,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_jwt.settings import api_settings
-from .jwtutils.serializers import TestSerializer
+from .jwtutils.serializers import TestSerializer, MysqlSerializer
+from  common.Mysql import Mysql
 import json
 
 
@@ -44,3 +45,34 @@ class DomainCheck(APIView):
         ser = TestSerializer(instance=res)
 
         return Response(ser.data)
+
+
+class MysqlSearch(APIView):
+    def get(self, request, *args, **kwargs):
+
+        mysql_conn = Mysql()
+        sql = "select * from device"
+        res = mysql_conn.select(sql)
+        ser_res = MysqlSerializer(instance=res, many=True)
+        return Response(ser_res.data)
+
+
+class AgentHandle(APIView):
+    res = {}
+    res["code"] = 1
+    res["data"] = {"host": "", "alert_type": ""}
+    res["message"] = "have not data!"
+
+    def post(self, request, *args, **kwargs):
+        hostname = request.POST.get('hostname')
+        alert_type = request.POST.get('alert_type')
+
+        if hostname != "" and alert_type != "" and hostname is not None and alert_type is not None:
+             print(hostname)
+             print(alert_type)
+             self.res["code"] = 0
+             self.res["data"] = {"host": hostname, "alert_type": alert_type}
+             self.res["message"] = "have not data!"
+             return Response(json.dumps(self.res))
+        else:
+            return Response(json.dumps(self.res))

@@ -17,3 +17,17 @@ class TestSerializer(serializers.Serializer):
     data = serializers.CharField()
     # ip = serializers.CharField(max_length=16)
     # detail = serializers.CharField()
+
+
+class MysqlSerializer(serializers.Serializer):
+    ssid = serializers.CharField()
+    ip = serializers.CharField()
+    cpu = serializers.CharField()
+    hdisk = serializers.CharField()
+    memory = serializers.CharField()
+    ethnet = serializers.CharField()
+    status = serializers.CharField()
+    group_id = serializers.IntegerField()
+    created_at = serializers.DateTimeField
+    updated_at = serializers.DateTimeField
+    remark = serializers.CharField()

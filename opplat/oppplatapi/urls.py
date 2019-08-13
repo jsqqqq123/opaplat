@@ -17,4 +17,6 @@ from rest_framework.views import APIView
 
 urlpatterns = [
     url(r'(?P<versions>[v1|v2])/test/domaincheck/$', views.DomainCheck.as_view(), name='domaincheck'),
+    url(r'(?P<versions>[v1|v2])/test/mysqlsearch/$', views.MysqlSearch.as_view(), name='mysqlsearch'),
+    url(r'(?P<versions>[v1|v2])/test/agenthandle/$', views.AgentHandle.as_view(), name='agenthandle'),
 ]
